@@ -1,0 +1,111 @@
+{
+ "antes": [
+  {
+   "file": "index-B61fS8ih.js",
+   "raw": 993218,
+   "gz": 298714,
+   "br": 243961,
+   "initial": true
+  },
+  {
+   "file": "index-Br0UakmO.css",
+   "raw": 17029,
+   "gz": 4089,
+   "br": 3521,
+   "initial": true
+  }
+ ],
+ "despues": [
+  {
+   "file": "AccountPage-COKzEocT.js",
+   "raw": 1517,
+   "gz": 770,
+   "br": 697,
+   "initial": false
+  },
+  {
+   "file": "AdminPage-BkDtR9yo.js",
+   "raw": 366971,
+   "gz": 107742,
+   "br": 90016,
+   "initial": false
+  },
+  {
+   "file": "CartPage-C4D64uEZ.js",
+   "raw": 3512,
+   "gz": 1556,
+   "br": 1371,
+   "initial": false
+  },
+  {
+   "file": "LoginPage-Dxtt2LFI.js",
+   "raw": 2207,
+   "gz": 1024,
+   "br": 873,
+   "initial": false
+  },
+  {
+   "file": "NotFoundPage-rY02DGy_.js",
+   "raw": 467,
+   "gz": 295,
+   "br": 241,
+   "initial": false
+  },
+  {
+   "file": "ProductDetailPage-C8zO92sh.js",
+   "raw": 32194,
+   "gz": 12555,
+   "br": 11225,
+   "initial": false
+  },
+  {
+   "file": "RegisterPage-BE3zgURj.js",
+   "raw": 4631,
+   "gz": 1942,
+   "br": 1684,
+   "initial": false
+  },
+  {
+   "file": "index--j1Bazqx.css",
+   "raw": 17469,
+   "gz": 4181,
+   "br": 3602,
+   "initial": true
+  },
+  {
+   "file": "index-CkGETU5v.js",
+   "raw": 20837,
+   "gz": 8380,
+   "br": 7395,
+   "initial": true
+  },
+  {
+   "file": "security-AubDT1mp.js",
+   "raw": 817,
+   "gz": 502,
+   "br": 433,
+   "initial": false
+  },
+  {
+   "file": "vendor-react-B5-EIHJt.js",
+   "raw": 141999,
+   "gz": 45576,
+   "br": 39823,
+   "initial": true
+  },
+  {
+   "file": "vendor-router-0VxlJX98.js",
+   "raw": 22951,
+   "gz": 8463,
+   "br": 7573,
+   "initial": true
+  },
+  {
+   "file": "vendor-supabase-D8R8VNKF.js",
+   "raw": 120352,
+   "gz": 29390,
+   "br": 25276,
+   "initial": true
+  }
+ ]
+}

@@ -1,0 +1,35 @@
+=== ATAQUES CONTRA EL ESQUEMA ORIGINAL (ANTES) ===
+                    prueba                     |      rol      |                                       resultado                                        
+-----------------------------------------------+---------------+----------------------------------------------------------------------------------------
+ A1 Anónimo lee PII de todos los perfiles     | anon          | EJECUTADO → 3 perfiles; ej: alice@mail.com / +57 3001112233 / Cl 100 #15-20, Bogotá
+ A2 Alice se auto-asigna rol admin             | authenticated | EJECUTADO → role=admin
+ A3 Alice cambia el precio de un producto a $1 | authenticated | EJECUTADO → price_cents=100
+ A4 Alice inserta pedido "pagado" por $1       | authenticated | EJECUTADO → paid total=100
+ A5 Alice lee pedidos de otros usuarios        | authenticated | EJECUTADO → 1 pedidos ajenos visibles
+ A6 Alice consulta el reporte de ventas admin  | authenticated | EJECUTADO → 1 filas de ventas
+ A7 Alice marca como enviado el pedido de Bob  | authenticated | EJECUTADO → 1 pedidos modificados
+
+=== ATAQUES CONTRA EL ESQUEMA ENDURECIDO (DESPUÉS) ===
+                       prueba                        |      rol      |                     resultado                      
+-----------------------------------------------------+---------------+----------------------------------------------------
+ A1 Anónimo lee PII de todos los perfiles           | anon          | BLOQUEADO → permission denied for table profiles
+ A1b Alice lee PII de Bob                            | authenticated | EJECUTADO → 0 filas privadas ajenas
+ A2 Alice se auto-asigna rol admin                   | authenticated | BLOQUEADO → permission denied for table profiles
+ A2b Rol de Alice tras enviar role=admin en metadata | authenticated | EJECUTADO → role=customer, nombre="Alice script"
+ A3 Alice cambia el precio de un producto a $1       | authenticated | EJECUTADO → 0 filas modificadas
+ A4 Alice inserta pedido "pagado" por $1             | authenticated | BLOQUEADO → permission denied for table orders
+ A5 Alice lee pedidos de otros usuarios              | authenticated | EJECUTADO → 0 pedidos ajenos visibles
+ A6 Alice consulta el reporte de ventas admin        | authenticated | BLOQUEADO → forbidden
+ A7 Alice marca como enviado el pedido de Bob        | authenticated | BLOQUEADO → permission denied for table orders
+
+=== FLUJOS LEGÍTIMOS (deben funcionar) ===
+                              prueba                               |      rol      |                         resultado                         
+-------------------------------------------------------------------+---------------+-----------------------------------------------------------
+ L1 Anónimo ve el catálogo                                       | anon          | EJECUTADO → 1 productos
+ L2 Alice crea pedido vía RPC enviando "price_cents":1 (ignorado) | authenticated | EJECUTADO → pedido 0fbb1543-bb07-491e-9f12-038328d64b0e
+ L2b Total cobrado = 2 × precio real (8.900.000)                  | authenticated | EJECUTADO → total_cents=17800000 status=pending items=2
+ L3 Alice ve solo sus pedidos                                      | authenticated | EJECUTADO → 1 pedidos propios
+ L4 Alice actualiza su nombre                                      | authenticated | EJECUTADO → Alice G.
+ L5 Carol (admin) consulta reporte de ventas                       | authenticated | EJECUTADO → 1 filas de ventas
+ L6 Carol (admin) actualiza un precio                              | authenticated | EJECUTADO → price_cents=8500000
+
